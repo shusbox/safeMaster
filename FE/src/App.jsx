@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/login';
 import Signup from './components/signup';
-import './App.css'
 import QuizPage from "./pages/quiz";
 
 const Home = () => {
