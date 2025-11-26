@@ -1,9 +1,6 @@
 import * as AuthStyled from "../../styles/auth";
-import useLoginModalStore from "../../store/loginModal";
 
-const Login = () => {
-  const { loginModal } = useLoginModalStore();
-
+const Signup = () => {
   return (
     <>
       <AuthStyled.Login>
@@ -24,4 +21,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

@@ -1,14 +1,14 @@
 import * as MainStyled from "../styles/main";
 import Login from "../components/login/index";
-import { useModalStore } from "../store/modal";
+import useLoginModalStore from "../store/loginModal";
 
 const LoginModal = () => {
-  const { isVisible, modal } = useModalStore();
+  const { loginIsVisible, loginModal } = useLoginModalStore();
 
   return (
     <>
-      {isVisible && <Login />}
-      <button onClick={modal}> 시작하기 </button>
+      {loginIsVisible && <Login />}
+      <button onClick={loginModal}> 시작하기 </button>
     </>
   );
 };
