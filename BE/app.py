@@ -1,13 +1,14 @@
 from flask import Flask, request, jsonify, redirect, render_template
 from db import get_db
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def home():
     return redirect("http://127.0.0.1:5173")
 
-if __name__ == "__main__":
-    app.run(port=5000, debug=True)
 
 @app.route("/signin", methods=["POST"])
 def signin():
@@ -23,7 +24,7 @@ def signin():
         user = c.fetchone()
 
     if user:
-        return redirect("/main")
+        return redirect("/quiz")
     else:
         return "로그인 실패: 아이디 또는 비밀번호 틀림", 401
 @app.route("/signup", methods=["POST"])
@@ -43,4 +44,8 @@ def signup():
 
 @app.route("/main")
 def main():
-    return render_template("main.html")
+    return redirect("http://127.0.0.1:5173/quiz")
+
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)

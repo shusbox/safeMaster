@@ -21,6 +21,7 @@ const Login = () => {
         username,
         password
       },
+      contentType: 'application/x-www-form-urlencoded',
       success: (res) => console.log("로그인 성공", res),
       error: (err) => console.error("로그인 실패", err)
     });
