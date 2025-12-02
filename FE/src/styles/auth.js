@@ -18,7 +18,7 @@ export const Container = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: ${theme.transform.float};
+  transform: translate(-50%, -50%);
   border-radius: ${theme.borderRadius.md};
   background-color: ${theme.colors.bgPrimary};
 `;
@@ -57,7 +57,7 @@ export const ButtonContainer = styled.div`
   gap: 12px;
 `;
 
-export const SubmitButton = styled.button`
+export const CancelButton = styled.button`
   padding: 8px;
   width: 100%;
   font-size: 16px;
@@ -72,7 +72,7 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const CancelButton = styled.button`
+export const SubmitButton = styled.button`
   padding: 8px;
   width: 100%;
   color: ${theme.colors.textDisabled};

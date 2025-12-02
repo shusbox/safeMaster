@@ -32,7 +32,6 @@ export const shadow = {
 }
 
 export const transform = {
-  arry: `translate(-50%, -50%)`,
   float: `translateY(-4px)`,
 }
 

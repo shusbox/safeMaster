@@ -49,7 +49,7 @@ const Login = () => {
             />
           </AuthStyled.InputContainer>
           <AuthStyled.ButtonContainer>
-            <AuthStyled.CancelButton onClick={() => { signinModal(); signupModal}}> 회원가입 </AuthStyled.CancelButton>
+            <AuthStyled.CancelButton onClick={() => { signinModal(); signupModal(); }}> 회원가입 </AuthStyled.CancelButton>
             <AuthStyled.SubmitButton onClick={onClickLogin}> 로그인 </AuthStyled.SubmitButton>
           </AuthStyled.ButtonContainer>
         </AuthStyled.Form>
