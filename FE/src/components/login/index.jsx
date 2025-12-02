@@ -48,12 +48,12 @@ const Login = () => {
             />
           </AuthStyled.InputContainer>
           <AuthStyled.ButtonContainer>
-            <AuthStyled.ButtonSignup> 회원가입 </AuthStyled.ButtonSignup>
+            <AuthStyled.ButtonSignup onClick={() => { loginModal(); signupModal(); }}> 회원가입 </AuthStyled.ButtonSignup>
             <AuthStyled.ButtonLogin onClick={onClickLogin}> 로그인 </AuthStyled.ButtonLogin>
           </AuthStyled.ButtonContainer>
         </AuthStyled.Form>
       </AuthStyled.Login>
-      <AuthStyled.Backdrop onClick={() => { loginModal(); signupModal(); }} />
+      <AuthStyled.Backdrop onClick={() => { loginModal(); }} />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import * as MainStyled from "../styles/main";
 import Login from "../components/login/index";
+import Signup from "../components/signup/index";
 import useLoginModalStore from "../store/loginModal";
+import useSignupModalStore from "../store/signupModal";
 
 const LoginModal = () => {
   const { loginIsVisible, loginModal } = useLoginModalStore();
@@ -13,11 +15,22 @@ const LoginModal = () => {
   );
 };
 
+const SignupModal = () => {
+  const { signupIsVisible, signupModal } = useSignupModalStore();
+
+  return (
+    <>
+      {signupIsVisible && <Signup />}
+    </>
+  );
+};
+
 const Main = () => {
   return (
     <MainStyled.Main>
       <h1> 안전 마스터 </h1>
       <LoginModal />
+      <SignupModal />
     </MainStyled.Main>
   );
 };
