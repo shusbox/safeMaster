@@ -6,7 +6,7 @@ const MainUser = () => {
   return (
     <MainStyled.Container>
       <h1> 안전 마스터 </h1>
-      <Link to="/selectQuiz"> <Styled.Button> 시작하기 </Styled.Button> </Link>
+      <Link to="/quiz"> <Styled.Button> 시작하기 </Styled.Button> </Link>
     </MainStyled.Container>
   );
 };
