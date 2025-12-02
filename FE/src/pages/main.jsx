@@ -10,13 +10,13 @@ const LoginModal = () => {
   return (
     <>
       {loginIsVisible && <Login />}
-      <button onClick={loginModal}> 시작하기 </button>
+      <button onClick={loginModal}> 로그인하기 </button>
     </>
   );
 };
 
 const SignupModal = () => {
-  const { signupIsVisible, signupModal } = useSignupModalStore();
+  const { signupIsVisible } = useSignupModalStore();
 
   return (
     <>
