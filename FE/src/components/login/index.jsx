@@ -1,11 +1,12 @@
 import { useState } from "react";
 import $ from "jquery";
-import * as AuthStyled from "../../styles/auth";
-import useLoginModalStore from "../../store/loginModal";
+import useSigninModalStore from "../../store/signinModal";
 import useSignupModalStore from "../../store/signupModal";
+import * as Styeld from "../../styles/common";
+import * as AuthStyled from "../../styles/auth";
 
 const Login = () => {
-  const { loginModal } = useLoginModalStore();
+  const { signinModal } = useSigninModalStore();
   const { signupModal } = useSignupModalStore();
 
   const [ username, setUsername ] = useState('');
@@ -29,8 +30,8 @@ const Login = () => {
 
   return (
     <>
-      <AuthStyled.Login>
-        <AuthStyled.Title> 로그인 </AuthStyled.Title>
+      <AuthStyled.Container>
+        <Styeld.Header> 로그인 </Styeld.Header>
         <AuthStyled.Form>
           <AuthStyled.InputContainer>
             <AuthStyled.Input
@@ -48,12 +49,12 @@ const Login = () => {
             />
           </AuthStyled.InputContainer>
           <AuthStyled.ButtonContainer>
-            <AuthStyled.ButtonSignup onClick={() => { loginModal(); signupModal(); }}> 회원가입 </AuthStyled.ButtonSignup>
-            <AuthStyled.ButtonLogin onClick={onClickLogin}> 로그인 </AuthStyled.ButtonLogin>
+            <AuthStyled.CancelButton onClick={() => { signinModal(); signupModal}}> 회원가입 </AuthStyled.CancelButton>
+            <AuthStyled.SubmitButton onClick={onClickLogin}> 로그인 </AuthStyled.SubmitButton>
           </AuthStyled.ButtonContainer>
         </AuthStyled.Form>
-      </AuthStyled.Login>
-      <AuthStyled.Backdrop onClick={() => { loginModal(); }} />
+      </AuthStyled.Container>
+      <AuthStyled.Backdrop onClick={() => { signinModal(); }} />
     </>
   );
 };

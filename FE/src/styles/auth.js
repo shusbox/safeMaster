@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
+import { theme } from "./theme";
 
 export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background-color: #00000047;
+  background-color: ${theme.colors.bgDisabled};
   z-index: -10;
 `;
 
-export const Login = styled.div`
+export const Container = styled.div`
   padding: 40px;
   width: 600px;
   display: flex;
@@ -17,14 +18,9 @@ export const Login = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 8px;
-  background-color: #FFFFFF;
-`;
-
-export const Title = styled.h1`
-  margin: 0;
-  cursor: default;
+  transform: ${theme.transform.float};
+  border-radius: ${theme.borderRadius.md};
+  background-color: ${theme.colors.bgPrimary};
 `;
 
 export const Form = styled.form`
@@ -45,18 +41,13 @@ export const Input = styled.input`
   font-size: 16px;
   font-family: Sandoll Hoyoyo2;
   border: none;
-  border-radius: 4px;
-  background-color: #f7f6f6ff;
-  cursor: default;
+  border-radius: ${theme.borderRadius.sm};
+  background-color: ${theme.colors.bgTertiary};
 
   &::placeholder {
-    color: #898687ff;
+    color: ${theme.colors.textSecondary};
     font-size: 16px;
     font-family: Sandoll Hoyoyo2;
-  }
-
-  &:focus {
-    border: 1px solid #ff669c;
   }
 `;
 
@@ -66,33 +57,33 @@ export const ButtonContainer = styled.div`
   gap: 12px;
 `;
 
-export const ButtonSignup = styled.button`
+export const SubmitButton = styled.button`
   padding: 8px;
   width: 100%;
   font-size: 16px;
   font-family: Sandoll Hoyoyo2;
   border: none;
-  border-radius: 4px;
-  background-color: #f3f3f3ff;
+  border-radius: ${theme.borderRadius.sm};
+  background-color: ${theme.colors.natural};
   cursor: pointer;
 
   &:hover {
-    background-color: #e1e1e1ff;
+    background-color: ${theme.colors.naturalHover};
   }
 `;
 
-export const ButtonLogin = styled.button`
+export const CancelButton = styled.button`
   padding: 8px;
   width: 100%;
-  color: #FFFFFF;
+  color: ${theme.colors.textDisabled};
   font-size: 16px;
   font-family: Sandoll Hoyoyo2;
   border: none;
-  border-radius: 4px;
-  background-color: #ff669c;
+  border-radius: ${theme.borderRadius.sm};
+  background-color: ${theme.colors.primary};
   cursor: pointer;
 
   &:hover {
-    background-color: #e25e8cff
+    background-color: ${theme.colors.primaryHover};
   }
 `;
