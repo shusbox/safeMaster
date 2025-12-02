@@ -1,11 +1,10 @@
 import { useState } from "react";
 import $ from "jquery";
-import * as AuthStyled from "../../styles/auth";
-import useLoginModalStore from "../../store/loginModal";
 import useSignupModalStore from "../../store/signupModal";
+import * as Styled from "../../styles/common";
+import * as AuthStyled from "../../styles/auth";
 
 const Signup = () => {
-  const { loginModal } = useLoginModalStore();
   const { signupModal } = useSignupModalStore();
 
   const [ username, setUsername ] = useState('');
@@ -30,8 +29,8 @@ const Signup = () => {
 
   return (
     <>
-      <AuthStyled.Login>
-        <AuthStyled.Title> 회원가입 </AuthStyled.Title>
+      <AuthStyled.Container>
+        <Styled.Header> 회원가입 </Styled.Header>
         <AuthStyled.Form>
           <AuthStyled.InputContainer>
             <AuthStyled.Input
@@ -56,11 +55,11 @@ const Signup = () => {
             />
           </AuthStyled.InputContainer>
           <AuthStyled.ButtonContainer>
-            <AuthStyled.ButtonSignup onClick={signupModal}> 뒤로 </AuthStyled.ButtonSignup>
-            <AuthStyled.ButtonLogin onClick={onClickSignup}> 회원가입 </AuthStyled.ButtonLogin>
+            <AuthStyled.CancelButton onClick={signupModal}> 뒤로 </AuthStyled.CancelButton>
+            <AuthStyled.SubmitButton onClick={onClickSignup}> 회원가입 </AuthStyled.SubmitButton>
           </AuthStyled.ButtonContainer>
         </AuthStyled.Form>
-      </AuthStyled.Login>
+      </AuthStyled.Container>
       <AuthStyled.Backdrop onClick={() => { signupModal(); }} />
     </>
   );
