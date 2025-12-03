@@ -1,11 +1,14 @@
+import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useUserStore from "../store/user";
+import Progress from "../components/progress";
 import { question } from "../question";
 import * as QuizStyled from "../styles/quiz"
-import Progress from "../components/progress";
 
 const QuizPage = () => {
   const navigate = useNavigate();
+  const { username } = useUserStore();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
 
@@ -14,8 +17,20 @@ const QuizPage = () => {
     const isLast = quizNumber >= question.length - 1;
 
     if (isLast) {
-      console.log(count);
       const finalScore = isCorrect ? count + 1 : count;
+
+      $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:5000/result',
+        data: {
+          username,
+          finalScore,
+        },
+        contentType: 'application/x-www-form-urlencoded',
+        success: (res) => console.log("결과 제출 성공", res),
+        error: (err) => console.error("결과 제출 실패", err)
+      });
+
       navigate("/finish", { state: { count: finalScore }});
     } else {
       if (isCorrect) setCount(count + 1);

@@ -4,6 +4,7 @@ import MainUser from "./pages/mainUser";
 import SelectQuiz from "./pages/selectQuiz";
 import Quiz from "./pages/quiz";
 import FinishQuiz from "./components/finishQuiz";
+import Rank from "./components/rank/index";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/quiz" element={ <SelectQuiz /> } />
         <Route path="/quiz/sciencelab" element={ <Quiz /> } />
         <Route path="/finish" element={ <FinishQuiz /> } />
+        <Route path="/rank" element={ <Rank /> } />
       </Routes>
     </Router>
   );

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import $ from "jquery";
+import useUserStore from "../../store/user";
 import useSigninModalStore from "../../store/signinModal";
 import useSignupModalStore from "../../store/signupModal";
 import * as Styeld from "../../styles/common";
 import * as AuthStyled from "../../styles/auth";
 
 const Login = () => {
+  const { setUsername } = useUserStore();
   const { signinModal } = useSigninModalStore();
   const { signupModal } = useSignupModalStore();
 
-  const [ username, setUsername ] = useState('');
+  const [ usernameInput, setUsernameInput ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const onClickLogin = (e) => {
@@ -19,11 +21,14 @@ const Login = () => {
       type: 'POST',
       url: 'http://127.0.0.1:5000/signin',
       data: {
-        username,
-        password
+        usernameInput,
+        password,
       },
       contentType: 'application/x-www-form-urlencoded',
-      success: (res) => console.log("로그인 성공", res),
+      success: (res) => {
+        console.log("로그인 성공", res)
+        setUsername(usernameInput);
+      },
       error: (err) => console.error("로그인 실패", err)
     });
   };
@@ -36,8 +41,8 @@ const Login = () => {
           <AuthStyled.InputContainer>
             <AuthStyled.Input
               placeholder="아이디"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={usernameInput}
+              onChange={(e) => setUsernameInput(e.target.value)}
               required
             />
             <AuthStyled.Input
