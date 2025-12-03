@@ -54,13 +54,14 @@ def result():
     db = get_db()
     with db.cursor() as c:
         c.execute(
-            "INSERT INTO results (username, score) VALUES (%s, %s)",
-            (username, allresult)
+            "UPDATE users SET correct_count=%s WHERE username=%s",
+            (allresult, username)
         )
         db.commit()
 
     return jsonify({"success": True})
 
+   
 @app.route("/main")
 def main():
     return jsonify({"route": "/quiz"})
