@@ -3,7 +3,9 @@ from db import get_db
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+
+
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 @app.route("/")
 def home():
@@ -24,9 +26,10 @@ def signin():
         user = c.fetchone()
 
     if user:
-        return redirect("/quiz")
+        return jsonify({"success": True, "route": "/signin"})
     else:
-        return "로그인 실패: 아이디 또는 비밀번호 틀림", 401
+        return jsonify({"success": False}), 401
+
 @app.route("/signup", methods=["POST"])
 def signup():
     username = request.form.get("username")
@@ -42,9 +45,25 @@ def signup():
 
     return redirect("/")
 
+@app.route("/result", methods=["POST"])
+def result():
+
+    username = request.form.get("username")
+    allresult = request.form.get("score")
+
+    db = get_db()
+    with db.cursor() as c:
+        c.execute(
+            "INSERT INTO results (username, score) VALUES (%s, %s)",
+            (username, allresult)
+        )
+        db.commit()
+
+    return jsonify({"success": True})
+
 @app.route("/main")
 def main():
-    return redirect("http://127.0.0.1:5173/quiz")
+    return jsonify({"route": "/quiz"})
 
 
 if __name__ == "__main__":

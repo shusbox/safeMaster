@@ -26,8 +26,13 @@ const Login = () => {
       },
       contentType: 'application/x-www-form-urlencoded',
       success: (res) => {
-        console.log("로그인 성공", res)
+        console.log("로그인 성공", res);
         setUsername(usernameInput);
+        if (res.success && res.route) {
+          window.location.href = `http://127.0.0.1:5173${res.route}`;
+        }else{
+          alert(res.message);
+        }
       },
       error: (err) => console.error("로그인 실패", err)
     });
