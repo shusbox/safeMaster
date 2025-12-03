@@ -7,11 +7,11 @@ import * as Styeld from "../../styles/common";
 import * as AuthStyled from "../../styles/auth";
 
 const Login = () => {
-  const { setUsername } = useUserStore();
+  const { setUsernameStore } = useUserStore();
   const { signinModal } = useSigninModalStore();
   const { signupModal } = useSignupModalStore();
 
-  const [ usernameInput, setUsernameInput ] = useState('');
+  const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const onClickLogin = (e) => {
@@ -21,16 +21,16 @@ const Login = () => {
       type: 'POST',
       url: 'http://127.0.0.1:5000/signin',
       data: {
-        usernameInput,
+        username,
         password,
       },
       contentType: 'application/x-www-form-urlencoded',
       success: (res) => {
         console.log("로그인 성공", res);
-        setUsername(usernameInput);
+        setUsernameStore(username);
         if (res.success && res.route) {
           window.location.href = `http://127.0.0.1:5173${res.route}`;
-        }else{
+        } else {
           alert(res.message);
         }
       },
@@ -46,8 +46,8 @@ const Login = () => {
           <AuthStyled.InputContainer>
             <AuthStyled.Input
               placeholder="아이디"
-              value={usernameInput}
-              onChange={(e) => setUsernameInput(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
             <AuthStyled.Input

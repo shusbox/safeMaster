@@ -8,7 +8,7 @@ import * as QuizStyled from "../styles/quiz"
 
 const QuizPage = () => {
   const navigate = useNavigate();
-  const { username } = useUserStore();
+  const { usernameStore } = useUserStore();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
 
@@ -23,7 +23,7 @@ const QuizPage = () => {
         type: 'POST',
         url: 'http://127.0.0.1:5000/result',
         data: {
-          username,
+          usernameStore,
           finalScore,
         },
         contentType: 'application/x-www-form-urlencoded',
