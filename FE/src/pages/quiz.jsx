@@ -1,19 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { question } from "../question";
 import * as QuizStyled from "../styles/quiz"
 import Progress from "../components/progress";
 
 const QuizPage = () => {
+  const navigate = useNavigate();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
 
   const CheckHandle = (answer) => {
-    if (quizNumber >= question.length - 1) {
+    const isCorrect = answer === question[quizNumber].correct;
+    const isLast = quizNumber >= question.length - 1;
+
+    if (isLast) {
       console.log(count);
+      const finalScore = isCorrect ? count + 1 : count;
+      navigate("/finish", { state: { count: finalScore }});
     } else {
-      if (answer === question[quizNumber].correct) {
-        setCount(count + 1);
-      }
+      if (isCorrect) setCount(count + 1);
       setQuizNumber(quizNumber + 1);
     }
   };
