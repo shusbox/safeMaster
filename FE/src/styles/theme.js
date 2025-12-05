@@ -28,7 +28,7 @@ export const borderRadius = {
 }
 
 export const shadow = {
-  primary: `box-shadow: 0 4px 0 ${colors.optionDisabled}`,
+  primary: `0 4px 0 ${colors.optionDisabled}`,
 }
 
 export const transform = {

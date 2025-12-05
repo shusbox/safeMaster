@@ -1,12 +1,12 @@
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useUserStore from "../store/user";
-import Progress from "../components/progress";
-import { question } from "../question";
-import * as QuizStyled from "../styles/quiz"
+import useUserStore from "../../../store/user";
+import Progress from "../../progress/index";
+import { question } from "../../../question";
+import * as QuizStyled from "../../../styles/quiz"
 
-const QuizPage = () => {
+const Quiz = () => {
   const navigate = useNavigate();
   const { usernameStore } = useUserStore();
   const [ count, setCount ] = useState(0);
@@ -73,4 +73,4 @@ const QuizPage = () => {
   );
 };
 
-export default QuizPage;
+export default Quiz;

@@ -1,4 +1,4 @@
-import * as ProgressStyled from "../styles/progress";
+import * as ProgressStyled from "../../styles/progress";
 
 const Progress = () => {
   return (
