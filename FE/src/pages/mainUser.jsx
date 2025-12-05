@@ -5,8 +5,11 @@ import * as MainStyled from "../styles/main";
 const MainUser = () => {
   return (
     <MainStyled.Container>
-      <h1> 안전 마스터 </h1>
-      <Link to="/quiz"> <Styled.Button> 시작하기 </Styled.Button> </Link>
+      <Styled.Header> 안전 마스터 </Styled.Header>
+      <MainStyled.ButtonContainer>
+        <Link to="/quiz"> <Styled.Button> 시작하기 </Styled.Button> </Link>
+        <Link to="/rank"> <Styled.Button> 랭킹 보기 </Styled.Button> </Link>
+      </MainStyled.ButtonContainer>
     </MainStyled.Container>
   );
 };

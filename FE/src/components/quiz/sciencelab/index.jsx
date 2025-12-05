@@ -11,6 +11,7 @@ const Quiz = () => {
   const { usernameStore } = useUserStore();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
+  const progress = (quizNumber / question.length) * 100;
 
   const CheckHandle = (answer) => {
     const isCorrect = answer === question[quizNumber].correct;
@@ -57,7 +58,7 @@ const Quiz = () => {
 
   return (
     <>
-      <Progress />
+      <Progress progress={progress} />
       <QuizStyled.Card>
         <QuizStyled.TitleWrapper>
           <QuizStyled.Id> Quiz {question[quizNumber].id} </QuizStyled.Id>

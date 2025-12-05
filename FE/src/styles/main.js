@@ -9,3 +9,9 @@ export const Container = styled.div`
   align-items: center;
   gap: 20px;
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;

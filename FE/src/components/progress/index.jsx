@@ -1,8 +1,10 @@
 import * as ProgressStyled from "../../styles/progress";
 
-const Progress = () => {
+const Progress = ({ progress }) => {
   return (
-    <ProgressStyled.Progress />
+    <ProgressStyled.ProgressContainer>
+      <ProgressStyled.ProgressBar style={{ width: `${progress}%` }} />
+    </ProgressStyled.ProgressContainer>
   );
 };
 
