@@ -4,9 +4,14 @@ export const Header = styled.h1`
   margin: 0px;
 `;
 
+export const Body = styled.p`
+  margin: 0px;
+`;
+
 export const Button = styled.button`
   padding: 12px;
   color: #FFFFFF;
+  font-size: 16px;
   font-family: Sandoll Hoyoyo2;
   border: none;
   border-radius: 4px;

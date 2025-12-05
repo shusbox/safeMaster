@@ -31,7 +31,7 @@ const Quiz = () => {
         error: (err) => console.error("결과 제출 실패", err)
       });
 
-      navigate("/finish", { state: { count: finalScore }});
+      navigate("/result", { state: { count: finalScore }});
     } else {
       if (isCorrect) setCount(count + 1);
       setQuizNumber(quizNumber + 1);
