@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 import useSignupModalStore from "../../store/signupModal";
 import * as Styled from "../../styles/common";
 import * as AuthStyled from "../../styles/auth";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const { signupModal } = useSignupModalStore();
-
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ checkPassword, setCheckPassword ] = useState('');
@@ -22,9 +23,12 @@ const Signup = () => {
         password
       },
       contentType: 'application/x-www-form-urlencoded',
-      success: (res) => console.log("회원가입 성공", res),
-      error: (err) => console.error("회원가입 실패", err)
-    });
+    }).done((result) => {
+      console.log("회원가입 성공", result);
+      navigate("/signin");
+    }).fail((result) => {
+      console.log(result);
+    })
   };
 
   return (
