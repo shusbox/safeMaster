@@ -28,6 +28,7 @@ const Login = () => {
       contentType: 'application/x-www-form-urlencoded',
       success: (res) => {
         console.log("로그인 성공", res);
+        setUsernameStore(username);
 
         if (res.success && res.route) {
           window.location.href = `http://127.0.0.1:5173${res.route}`;

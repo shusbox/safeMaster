@@ -8,7 +8,7 @@ import * as QuizStyled from "../../../styles/quiz"
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const { username } = useUserStore();
+  const { usernameStore } = useUserStore();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
   const progress = (quizNumber / question.length) * 100;
@@ -24,11 +24,11 @@ const Quiz = () => {
         type: 'POST',
         url: 'http://127.0.0.1:5000/result',
         data: {
-          username,
+          usernameStore,
           finalScore,
         },
         contentType: 'application/x-www-form-urlencoded',
-        success: (res) => {console.log("결과 제출 성공", res); console.log(username);},
+        success: (res) => {console.log("결과 제출 성공", res); console.log(usernameStore);},
         error: (err) => console.error("결과 제출 실패", err)
       });
 
