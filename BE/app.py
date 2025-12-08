@@ -16,6 +16,9 @@ def home():
 def signin():
     username = request.form.get("username")
     password = request.form.get("password")
+    
+    print("Username:", username)
+    print("Password:", password)
 
     db = get_db()
     with db.cursor() as c:
@@ -47,10 +50,11 @@ def signup():
 
 @app.route("/result", methods=["POST"])
 def result():
-
-    username = request.form.get("usernamestore")
-    allresult = request.form.get("finalscore")
-
+     
+    username = request.form.get("usernameStore")
+    allresult = request.form.get("finalScore")
+    print("usernameStore:", username)
+    print("finalScore:", allresult)
     db = get_db()
     with db.cursor() as c:
         c.execute(
@@ -58,6 +62,7 @@ def result():
             (allresult, username)
         )
         db.commit()
+
 
     return jsonify({"success": True})
 
