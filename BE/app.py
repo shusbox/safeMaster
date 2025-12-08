@@ -48,8 +48,8 @@ def signup():
 @app.route("/result", methods=["POST"])
 def result():
 
-    username = request.form.get("username")
-    allresult = request.form.get("score")
+    username = request.form.get("usernamestore")
+    allresult = request.form.get("finalscore")
 
     db = get_db()
     with db.cursor() as c:
