@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 import useUserStore from "../../store/user";
 import useSigninModalStore from "../../store/signinModal";
@@ -7,6 +8,8 @@ import * as Styeld from "../../styles/common";
 import * as AuthStyled from "../../styles/auth";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const { setUsernameStore } = useUserStore();
   const { signinModal } = useSigninModalStore();
   const { signupModal } = useSignupModalStore();
@@ -31,8 +34,7 @@ const Login = () => {
         setUsernameStore(username);
 
         if (res.success && res.route) {
-          window.location.href = `http://127.0.0.1:5173${res.route}`;
-          
+          navigate("/signin")
         } else {
           alert(res.message);
         }
