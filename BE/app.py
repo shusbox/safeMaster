@@ -37,7 +37,7 @@ def signin():
 def signup():
     username = request.form.get("username")
     password = request.form.get("password")
-
+    
     db = get_db()
     with db.cursor() as c:
         c.execute(
@@ -66,7 +66,19 @@ def result():
 
     return jsonify({"success": True})
 
-   
+
+@app.route("/rank", methods=["GET"])
+def rank():
+    db = get_db()
+    with db.cursor() as c:
+        c.execute(
+            "SELECT username, correct_count FROM users ORDER BY correct_count DESC"
+        )
+        rankings = c.fetchall()
+
+    return jsonify(rankings)
+
+
 @app.route("/main")
 def main():
     return jsonify({"route": "/quiz"})
