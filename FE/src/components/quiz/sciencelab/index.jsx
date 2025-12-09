@@ -28,7 +28,7 @@ const Quiz = () => {
           finalScore,
         },
         contentType: 'application/x-www-form-urlencoded',
-        success: (res) => {console.log("결과 제출 성공", res); console.log(usernameStore);},
+        success: (res) => console.log("결과 제출 성공", res),
         error: (err) => console.error("결과 제출 실패", err)
       });
 

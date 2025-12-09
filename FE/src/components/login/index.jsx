@@ -32,7 +32,7 @@ const Login = () => {
       success: (res) => {
         console.log("로그인 성공", res);
         setUsernameStore(username);
-
+        
         if (res.success && res.route) {
           navigate("/signin")
         } else {
@@ -52,7 +52,7 @@ const Login = () => {
             <AuthStyled.Input
               placeholder="아이디"
               value={username}
-              onChange={(e) => {setUsername(e.target.value); console.log(username);}}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
             <AuthStyled.Input

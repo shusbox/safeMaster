@@ -1,17 +1,22 @@
 import * as RankStyled from "../../styles/rank";
+import Item from "./item";
 
 const List = () => {
-  const Item = ({ number, usename, score }) => {
-    return (
-      <RankStyled.Item>
-        
-      </RankStyled.Item>
-    )
-  }
-
   return (
     <RankStyled.ListContainer>
-      
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
+      <Item number={"1"} username={"장기하"} score={"8점"} />
     </RankStyled.ListContainer>
   );
 };
