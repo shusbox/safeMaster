@@ -1,21 +1,38 @@
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useUserStore from "../../../store/user";
 import Progress from "../../progress/index";
 import { question } from "../../../question";
+import { Correct, Wrong } from "../answer";
 import * as QuizStyled from "../../../styles/quiz"
 
 const Quiz = () => {
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const navigate = useNavigate();
   const { usernameStore } = useUserStore();
   const [ count, setCount ] = useState(0);
   const [ quizNumber, setQuizNumber ] = useState(0);
+  const [ correct, setCorrect ] = useState(false);
+  const [ wrong, setWrong ] = useState(false);
   const progress = (quizNumber / question.length) * 100;
 
-  const CheckHandle = (answer) => {
+  const CheckHandle = async (answer) => {
     const isCorrect = answer === question[quizNumber].correct;
     const isLast = quizNumber >= question.length - 1;
+
+    if (isCorrect) {
+      setCorrect(true);
+      await wait(500);
+      setCorrect(false)
+      setCount((prev) => prev + 1)
+    } else {
+      setWrong(true);
+      await wait(500);
+      setWrong(false);
+    }
+    
+    setQuizNumber((prev) => prev + 1);
 
     if (isLast) {
       const finalScore = isCorrect ? count + 1 : count;
@@ -33,9 +50,6 @@ const Quiz = () => {
       });
 
       navigate("/result", { state: { count: finalScore }});
-    } else {
-      if (isCorrect) setCount(count + 1);
-      setQuizNumber(quizNumber + 1);
     }
   };
 
@@ -58,6 +72,8 @@ const Quiz = () => {
 
   return (
     <>
+      {correct && <Correct />}
+      {wrong && <Wrong />}
       <Progress progress={progress} />
       <QuizStyled.Card>
         <QuizStyled.TitleWrapper>

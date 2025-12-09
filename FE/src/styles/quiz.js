@@ -75,24 +75,40 @@ export const NumberText = styled.p`
   font-size: 18px;
 `;
 
-export const CorrectBackdrop = styled.div`
+export const AnswerBackdrop = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: ${theme.colors.bgDisabled};
+  position: absolute;
+  background-color: #00000087;
+  z-index: 10;
 `;
 
-export const CorrectContainer = styled.div`
+export const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 20;
 `;
 
 export const Correct = styled.h1`
   margin: 0;
-  font-size: 140px;
+  color: #18bb0aff;
+  font-size: 180px;
+`;
+
+export const Wrong = styled.h1`
+  margin: 0;
+  color: #bb0a0aff;
+  font-size: 180px;
+`;
+
+export const AnswerDescription = styled.p`
+  margin: 0;
+  color: ${theme.colors.textDisabled};
+  font-size: 35px;
 `;
