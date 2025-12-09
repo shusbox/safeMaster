@@ -88,6 +88,7 @@ export const AnswerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -107,8 +108,14 @@ export const Wrong = styled.h1`
   font-size: 180px;
 `;
 
+export const AnswerDescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
 export const AnswerDescription = styled.p`
   margin: 0;
   color: ${theme.colors.textDisabled};
-  font-size: 35px;
+  font-size: 25px;
 `;

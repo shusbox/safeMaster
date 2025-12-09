@@ -15,20 +15,24 @@ const Quiz = () => {
   const [ quizNumber, setQuizNumber ] = useState(0);
   const [ correct, setCorrect ] = useState(false);
   const [ wrong, setWrong ] = useState(false);
+  const [ correctAnswer, setCorrectAnswer ] = useState(0);
+  const [ answer, setAnswer ] = useState("");
   const progress = (quizNumber / question.length) * 100;
 
   const CheckHandle = async (answer) => {
     const isCorrect = answer === question[quizNumber].correct;
     const isLast = quizNumber >= question.length - 1;
+    setCorrectAnswer(question[quizNumber].correct);
+    setAnswer(question[quizNumber].answer);
 
     if (isCorrect) {
       setCorrect(true);
-      await wait(500);
+      await wait(2000);
       setCorrect(false)
       setCount((prev) => prev + 1)
     } else {
       setWrong(true);
-      await wait(500);
+      await wait(2000);
       setWrong(false);
     }
     
@@ -72,8 +76,8 @@ const Quiz = () => {
 
   return (
     <>
-      {correct && <Correct />}
-      {wrong && <Wrong />}
+      {correct && <Correct answer={answer} />}
+      {wrong && <Wrong correct={correctAnswer} answer={answer} />}
       <Progress progress={progress} />
       <QuizStyled.Card>
         <QuizStyled.TitleWrapper>
