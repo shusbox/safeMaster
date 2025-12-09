@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 import { theme } from "./theme";
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9,9 +13,11 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 30px;
+  margin: 0;
+  font-size: 40px;
 `;
 
 export const Time = styled.p`
-  
+  margin: 0;
+  font-size: 20px;
 `;

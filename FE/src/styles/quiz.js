@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { theme } from "./theme";
 
 export const Card = styled.div`
   padding: 80px 200px;
@@ -72,4 +73,26 @@ export const Number = styled.div`
 export const NumberText = styled.p`
   margin: 0;
   font-size: 18px;
+`;
+
+export const CorrectBackdrop = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: ${theme.colors.bgDisabled};
+`;
+
+export const CorrectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const Correct = styled.h1`
+  margin: 0;
+  font-size: 140px;
 `;

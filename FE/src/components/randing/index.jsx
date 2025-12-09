@@ -9,7 +9,7 @@ const Randing = ({ title }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTime((prev) => {
-        if (prev < 1) {
+        if (prev <= 1) {
           navigate(`/quiz/${title}`);
           return 0;
         } return prev - 1;
