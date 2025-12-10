@@ -25,7 +25,7 @@ const Signup = () => {
       contentType: 'application/x-www-form-urlencoded',
     }).done((result) => {
       console.log("회원가입 성공", result);
-      navigate("/signin");
+      navigate("/");
     }).fail((result) => {
       console.log(result);
     })

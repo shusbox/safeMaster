@@ -87,3 +87,8 @@ export const SubmitButton = styled.button`
     background-color: ${theme.colors.primaryHover};
   }
 `;
+
+export const Failed = styled.p`
+  margin: 0;
+  color: #c91111ff;
+`;
