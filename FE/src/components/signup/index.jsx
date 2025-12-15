@@ -16,11 +16,10 @@ const Signup = () => {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ checkPassword, setCheckPassword ] = useState('');
-  
-  const [ failed, setFailed ] = useState();
+  const [ failed, setFailed ] = useState(false);
 
   const onClickSignup = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
 
     $.ajax({
       type: 'POST',
@@ -33,18 +32,23 @@ const Signup = () => {
     }).done(() => {
       navigate("/");
     }).fail(() => {
+      setUsername('');
+      setPassword('');
+      setCheckPassword('');
+      usernameRef.current.focus();
       setFailed(true);
     })
   };
 
   const handleKeyDown = (e) => {
-    if (failed) setFailed(ture);
+    if (failed) setFailed(false);
 
     if (e.key === 'Enter') {
       e.preventDefault();
 
       if (e.target.id === "username") passwordRef.current.focus();
       if (e.target.id === "password") checkpasswordRef.current.focus();
+      if (e.target.id === "checkpassword") onClickSignup();
     }
   }
 
@@ -60,6 +64,7 @@ const Signup = () => {
               placeholder="아이디"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={handleKeyDown}
               required
             />
             <AuthStyled.Input
@@ -69,6 +74,7 @@ const Signup = () => {
               placeholder="비밀번호"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
               required
             />
             <AuthStyled.Input
@@ -78,6 +84,7 @@ const Signup = () => {
               placeholder="비밀번호 확인"
               value={checkPassword}
               onChange={(e) => setCheckPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
               required
             />
           </AuthStyled.InputContainer>
